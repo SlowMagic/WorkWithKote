@@ -24,7 +24,7 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
-        public string UserName { get; set; }
+        public string Email { get; set; }
         public string RuFirstName { get; set; }
         public string RuSecondName { get; set; }
         public string RuThirdName { get; set; }
@@ -40,17 +40,16 @@ namespace WorkWithKOTE.Models
         
         [DataType(DataType.Date)]
         public string DateZagran { get; set; }
-        public string Mail { get; set; }
         public string Mobile { get; set; }
-        public string Bonus { get; set; }
+        public int? Bonus { get; set; }
         public string Avatar { get; set; }
     }
 
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         public string ExternalLoginData { get; set; }
     }
@@ -77,8 +76,8 @@ namespace WorkWithKOTE.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -92,8 +91,8 @@ namespace WorkWithKOTE.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

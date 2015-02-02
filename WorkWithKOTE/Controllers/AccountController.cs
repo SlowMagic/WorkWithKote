@@ -18,84 +18,20 @@ namespace WorkWithKOTE.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        UsersContext db = new UsersContext();
-        // GET: /Account/Logi
-        [Authorize]
-        public ActionResult Upload()
-        {
-            return View();
-        }
-        [Authorize]
-        [HttpPost]
-        public ActionResult UpLoad(HttpPostedFileBase file)
-        {
-            
-            string filename = Guid.NewGuid().ToString();
-            string extension = Path.GetExtension(file.FileName);
-            filename += extension;
-            int i = WebSecurity.GetUserId(User.Identity.Name);
-            UserProfile user = db.UserProfiles.Find(i);
-            List<string> extensions = new List<string>() { ".png", ".jpg", ".gif" };
-            if(extensions.Contains(extension))
-            {
-                file.SaveAs(Server.MapPath("/UpLoad/" + filename));
-                user.Avatar = "/UpLoad/" + filename;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            else
-            {
-                ViewBag.Message = "Ошибка формата загружаемой картинки";
-            }
-            return RedirectToAction("Profile", "Account");
-        }
-
-        [Authorize]
-        public ActionResult Profile()
-        {
-           
-            int i = WebSecurity.GetUserId(User.Identity.Name);
-            UserProfile user = db.UserProfiles.Find(i);
-            return View(user);
-        }
-        public ActionResult EditProfile()
-        {
-            
-            int i = WebSecurity.GetUserId(User.Identity.Name);
-            UserProfile user = db.UserProfiles.Find(i);
-            
-            return View(user);
-
-        }
-        [Authorize]
-        [HttpPost]
-        public ActionResult EditProfile(UserProfile model)
-        {
-            
-            int i = WebSecurity.GetUserId(User.Identity.Name);
-            
-            model.UserId = i;
-            model.UserName = User.Identity.Name;
-            db.Entry(model).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Profile", "Account");
-        }
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
         //
         // POST: /Account/Login
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -139,8 +75,8 @@ namespace WorkWithKOTE.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.Email, model.Password);
+                    WebSecurity.Login(model.Email, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -300,7 +236,7 @@ namespace WorkWithKOTE.Controllers
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { Email = result.UserName, ExternalLoginData = loginData });
             }
         }
 
@@ -325,15 +261,15 @@ namespace WorkWithKOTE.Controllers
                 // Insert a new user into the database
                 using (UsersContext db = new UsersContext())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.Email.ToLower() == model.Email.ToLower());
                     // Check if user already exists
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new UserProfile { Email = model.Email });
                         db.SaveChanges();
 
-                        OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
+                        OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.Email);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
                         return RedirectToLocal(returnUrl);

@@ -5,7 +5,7 @@
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Регестрация</h2>
+    <h2>Регистрация</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -16,8 +16,8 @@
         <legend>Registration Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)

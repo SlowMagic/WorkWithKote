@@ -38,7 +38,7 @@ namespace WorkWithKOTE.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfiles", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfiles", "UserId", "Email", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
