@@ -61,6 +61,7 @@ namespace WorkWithKOTE.Controllers
             UserProfile user = db.UserProfiles.Find(i);
             return View(user);
         }
+        [Authorize]
         public ActionResult EditProfile()
         {
 
@@ -100,7 +101,7 @@ namespace WorkWithKOTE.Controllers
             else
             {
                 var token = WebSecurity.GeneratePasswordResetToken(Email);
-                var resetLink = "<a href=\"" + Url.Action("ResetPassword", "Account", new { un = i, rt = token }, "http") + "\">ReserPasswor</a>";
+                var resetLink = "<a href=\"" + Url.Action("ResetPassword", "Profile", new { un = i, rt = token }, "http") + "\">ReserPasswor</a>";
                 string subject = "Если вы хотите сбросить пароль то перейдите по данной ссылке";
                 string body = "<b>Если вы хотите сбросить пароль то перейдите по данной ссылке</b><br/>" + resetLink;
                 try
