@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "TourCreate";
+}
+@model WorkWithKOTE.Models.Tour
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script type="text/javascript">
+        function valid()
+        {
+            if (document.getElementById('Predop').checked) {
+                document.getElementById('PrePay').style.visibility = 'visible';
+            }
+            else {
+                document.getElementById('PrePay').style.visibility = 'hidden'
+            }
+        }
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>TourCreate</title>
+</head>
+<body>
+    <div>      
+        @using (Html.BeginForm())
+        {
+
+            @:Название  <input type="text" name="NameTour" /> <br />
+            @:Заголово  <input type="text" name="TitleTour" /> <br />
+            @:Описание  @Html.TextAreaFor(m=>m.DiscriptionTour)<br />
+            @:Стоимость <input type="text" name="Cost" /><br />
+            <input type="radio" name="Valuta" value="гривна" checked style="height:15px; width:15px" />@:Гривна<br />
+            <input type="radio" name="Valuta" value="доллар" style="height:15px; width:15px " />@:Dollar<br />
+            <input type="radio" name="Valuta" value="евро" style="height:15px; width:15px " />@:Euro<br />
+            @:Предоплата :<input type="checkbox" id="Predop" onclick="valid()" />
+            <input type="text" name="PrePay" style="visibility:hidden" id="PrePay" /><br/>
+            <input type="submit" value="Создать Тур" />
+        }
+    </div>
+</body>
+</html>

@@ -311,6 +311,8 @@
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\Profile\ForgotPassword.cshtml" />
+    <Content Include="Views\TourCreate\DateCreate.cshtml" />
+    <Content Include="Views\TourCreate\TourCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

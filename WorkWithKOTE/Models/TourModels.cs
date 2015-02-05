@@ -20,6 +20,8 @@ namespace WorkWithKOTE.Models
 
         public DbSet<DateTour> DateTours { get; set; }
 
+        public DbSet<DopUslug> DopUslugs { get; set; }
+
     }
     [Table ("Tour")]
    public class Tour
@@ -61,8 +63,8 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
        public int DateTourId { get; set; }
-       public DateTime? FirstDate { get; set; }
-       public DateTime? SecondDate { get; set; }
+       [DataType(DataType.Date)]
+       public string Date { get; set; }
     }
     [Table ("Gallery")]
     public class Gallery
@@ -80,6 +82,6 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DopUslugId { get; set; }
-        public string DopUslug { get; set; }
+        public string DopUsluga { get; set; }
     }
 }
