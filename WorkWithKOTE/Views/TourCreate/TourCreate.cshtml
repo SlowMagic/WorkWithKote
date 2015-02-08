@@ -1,39 +1,77 @@
 ﻿@{
     ViewBag.Title = "TourCreate";
 }
+@model WorkWithKOTE.Models.Tour
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <h2>TourCreate</h2>
-<script type="text/javascript">
-        function valid()
-        {
+    <form action="@Url.Action("TourCreate")" method="post" enctype="multipart/form-data">
+    <div>
+        Название  @Html.TextBoxFor(m => m.NameTour)
+        Заголово  @Html.TextBoxFor(m => m.TitleTour) <br />
+        Описание:
+        @Html.TextAreaFor(m => m.DiscriptionTour)<br />
+        стоимость @Html.TextBoxFor(m => m.Cost)<br />
+        <input type="radio" name="Valuta" value="гривна" checked style="height:15px; width:15px" />Гривна<br />
+        <input type="radio" name="Valuta" value="доллар" style="height:15px; width:15px " />Dollar<br />
+        <input type="radio" name="Valuta" value="евро" style="height:15px; width:15px " />Euro<br />
+        Предоплата :<input type="checkbox" id="Predop" onclick="valid()" />
+        @Html.TextBoxFor(m => m.PrePay, new { style = "visibility:hidden", id = "PrePay" })<br />
+        <br />
+        @Html.Partial("DateTour")
+        <br />
+        Виды Транспорта :<br />
+        Автобус @Html.CheckBoxFor(m => m.Bus)<br />
+        Самолет @Html.CheckBoxFor(m => m.Ariplane)<br />
+        Лайнер  @Html.CheckBoxFor(m => m.Ship)<br />
+        Подпись к цене
+        @Html.TextBoxFor(m => m.PodpicePrice)
+        <p>Аукциооная цена : @Html.TextBoxFor(m => m.AukcionPrice)</p>
+        <p>
+            Сумма Агента:  <input type="checkbox" id="Summa" onclick="valid2()" />
+            @Html.TextBoxFor(m => m.KommisiaAgent, new { style = "visibility:hidden", id = "SummaAgent" })<br />
+        </p>
+        @Html.Partial("DopUsluga")
+        <p>
+            Имя Сопровождающего :@Html.TextBoxFor(m => m.SuppName)<br />
+            Фото Сопровождающего :<input type="file" name="file" />
+        <p>@ViewBag.Message</p>
+        <p>
+             Ссылка на соц. сеть: @Html.TextBoxFor(m=>m.SuppVkontakte)<br />
+            Описание сопровождающего : @Html.TextBoxFor(m=>m.SuppDiscription)<br/>
+        </p>
+       <select name="KindOfPay">
+           <option selected="selected">Способ оплаты</option>
+           <option>Наличный</option>
+           <option>Безналичный</option>
+           <option>Оба</option>
+       </select>
+        <br/>
+
+        <input type="submit" value="Создать Тур" />
+    </div>
+</form>
+@section scripts {
+    <script>
+        CKEDITOR.replace("DiscriptionTour", {
+            filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
+        });
+    </script>
+<script>
+    CKEDITOR.replace("SuppDiscription", {
+        filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
+    });
+</script>
+
+    <script type="text/javascript">
+        function valid() {
             if (document.getElementById('Predop').checked) {
                 document.getElementById('PrePay').style.visibility = 'visible';
             }
-            else {
-                document.getElementById('PrePay').style.visibility = 'hidden'
+        }
+        function valid2() {
+            if (document.getElementById('Summa').checked) {
+                document.getElementById('SummaAgent').style.visibility = 'visible';
             }
         }
-</script>
-<div>
-    @using (Html.BeginForm())
-    {
-
-        @:Название  <input type="text" name="NameTour" /> <br />
-        @:Заголово  <input type="text" name="TitleTour" /> <br />
-        @:Описание:
-    <textarea id="fio" rows="2" name="DiscriptionTour" cols="20"></textarea><br/>
-    <script>
-        CKEDITOR.replace("DiscriptionTour", {
-        filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
-    });
     </script>
-        @: стоимость
-        <input type="text" name="Cost" /><br />
-        <input type="radio" name="Valuta" value="гривна" checked style="height:15px; width:15px" />@:Гривна<br />
-        <input type="radio" name="Valuta" value="доллар" style="height:15px; width:15px " />@:Dollar<br />
-        <input type="radio" name="Valuta" value="евро" style="height:15px; width:15px " />@:Euro<br />
-        @:Предоплата :<input type="checkbox" id="Predop" onclick="valid()" />
-        <input type="text" name="PrePay" style="visibility:hidden" id="PrePay" /><br />
-        <input type="submit" value="Создать Тур" />
-    }
-</div>
+}

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace WorkWithKOTE.Models
@@ -31,18 +32,22 @@ namespace WorkWithKOTE.Models
        public int TourId { get; set; }
        public string NameTour {get;set;}
        public string TitleTour { get; set; }
+       [AllowHtml]
+        [Required]
        public string DiscriptionTour { get; set; }
        public float? Cost { get; set; }
        public string Valuta { get; set; }
        public string PrePay { get; set; }
        public string Reservation { get; set; }
-       public int? DateTourId { get; set; }
-       public DateTour Date { get; set; }
-       public string Transport { get; set; }
+       [InverseProperty("TourId")]
+       public List <DateTour> Date { get; set; }
+       public bool Bus { get; set; }
+       public bool Ariplane { get; set; }
+       public bool Ship { get; set; }
        public string PodpicePrice { get; set; }
        public string AukcionPrice { get; set; }
        public string KommisiaAgent { get; set; }
-       public int? DopUslugId { get; set; }
+       [InverseProperty("TourId")]
        public DopUslug DopUsluga { get; set; }
        public string SuppName { get; set; }
        public string SuppVkontakte { get; set; }
@@ -63,8 +68,10 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
        public int DateTourId { get; set; }
-       [DataType(DataType.Date)]
-       public string Date { get; set; }
+        public int TourId { get; set; }
+        [DataType(DataType.Date)]
+        public string FitstDate { get; set; }
+        public string SeconDate { get; set; }
     }
     [Table ("Gallery")]
     public class Gallery
@@ -82,6 +89,7 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DopUslugId { get; set; }
+        public int TourId { get; set; }
         public string DopUsluga { get; set; }
     }
 }
