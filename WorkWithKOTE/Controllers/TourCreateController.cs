@@ -16,14 +16,15 @@ namespace WorkWithKOTE.Controllers
         TourContext db = new TourContext();
         public ActionResult TourCreate()
         {
-            return View();
+            ViewBag.GalleryID = new SelectList(db.Gallery, "GalleryId", "GalleryName");
+             return View();
         }
         [HttpPost]
-        public ActionResult TourCreate(Tour model, DateTour model1,DopUslug model2)
+        public ActionResult TourCreate(Tour model,DateTour model1,DopUslug model2)
         {
             model.DiscriptionTour = Regex.Replace(model.DiscriptionTour, "<script.*?</script>", "", RegexOptions.IgnoreCase);
-            model1.TourId = model.TourId;
-            model2.TourId = model2.TourId;
+            //model1.TourId = model.TourId;
+           // model2.TourId = model2.TourId;
             db.Entry(model1).State = EntityState.Added;
             db.Entry(model2).State = EntityState.Added;
             db.Entry(model).State = EntityState.Added;

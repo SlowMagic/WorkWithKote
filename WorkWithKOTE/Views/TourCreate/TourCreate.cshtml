@@ -17,7 +17,7 @@
         Предоплата :<input type="checkbox" id="Predop" onclick="valid()" />
         @Html.TextBoxFor(m => m.PrePay, new { style = "visibility:hidden", id = "PrePay" })<br />
         <br />
-        @Html.Partial("DateTour")
+         @Html.Partial("DateTour")
         <br />
         Виды Транспорта :<br />
         Автобус @Html.CheckBoxFor(m => m.Bus)<br />
@@ -46,6 +46,15 @@
            <option>Оба</option>
        </select>
         <br/>
+        Количество участyков :@Html.TextBoxFor(m=>m.AllPeople)<br/>
+        Уже едут :@Html.TextBoxFor(m=>m.People)<br/>
+        Обложка тура - <input type="file" name="TourImg" /><br/>
+         Галлерея : @Html.DropDownList("GalleryID",String.Empty)<br/>
+         Загрузить файл :<input type="file" name="Document" /><br/>
+         Бонус за тур :
+        <input type="checkbox" id="Bonus" onclick="valid3()" />
+        @Html.TextBoxFor(m => m.Bonus, new {style="visibility:hidden",id="BonusText" })<br/>
+         Тэги :@Html.TextBoxFor(m=>m.Teg)<br/>
 
         <input type="submit" value="Создать Тур" />
     </div>
@@ -73,5 +82,12 @@
                 document.getElementById('SummaAgent').style.visibility = 'visible';
             }
         }
+        function valid3() {
+            if(document.getElementById('Bonus').checked)
+            {
+                document.getElementById('BonusText').style.visibility = 'visible';
+            }
+        }
+        
     </script>
 }

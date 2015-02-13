@@ -1059,8 +1059,9 @@
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\Profile\ForgotPassword.cshtml" />
     <Content Include="Views\TourCreate\TourCreate.cshtml" />
-    <Content Include="Views\TourCreate\DateTour.cshtml" />
+    <Content Include="Views\TourCreate\DateTour1.cshtml" />
     <Content Include="Views\TourCreate\DopUsluga.cshtml" />
+    <Content Include="Views\TourCreate\DateTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
