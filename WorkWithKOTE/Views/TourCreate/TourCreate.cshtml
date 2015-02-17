@@ -3,6 +3,7 @@
 }
 @model WorkWithKOTE.Models.Tour
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <h2>TourCreate</h2>
 <form action="@Url.Action("TourCreate")" method="post" enctype="multipart/form-data">
     <div>
@@ -54,7 +55,7 @@
             <input type="checkbox" id="Bonus" onclick="valid3()" />
             @Html.TextBoxFor(m => m.Bonus, new { style = "visibility:hidden", id = "BonusText" })<br />
             Тэги :@Html.TextBoxFor(m => m.Teg)<br />
-
+          <div id="map_canvas" style="width:300px; height:300px"></div>
             <input type="submit" value="Создать Тур" />
             </div>
             </form>
@@ -83,9 +84,20 @@
                     }
                     function valid3() {
                         if (document.getElementById('Bonus').checked) {
-                            document.getElementById('BonusText').style.visibility = 'visible';
-                        }
+      document.getElementById('BonusText').style.visibility = 'visible';
+    }
                     }
-
-                </script>
-            }
+                    </script>
+ <script type="text/javascript">
+ var map;
+  $(function () {
+    var mapOptions = {
+                 center: new google.maps.LatLng(-34.397, 150.644),
+                 zoom: 8,
+                 mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                 map = new google.maps.Map(document.getElementById("map_canvas"),
+                 mapOptions);
+                    });
+</script>
+ }
