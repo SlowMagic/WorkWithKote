@@ -4,7 +4,7 @@
 @model WorkWithKOTE.Models.Tour
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <h2>TourCreate</h2>
-    <form action="@Url.Action("TourCreate")" method="post" enctype="multipart/form-data">
+<form action="@Url.Action("TourCreate")" method="post" enctype="multipart/form-data">
     <div>
         Название  @Html.TextBoxFor(m => m.NameTour)
         Заголово  @Html.TextBoxFor(m => m.TitleTour) <br />
@@ -17,77 +17,75 @@
         Предоплата :<input type="checkbox" id="Predop" onclick="valid()" />
         @Html.TextBoxFor(m => m.PrePay, new { style = "visibility:hidden", id = "PrePay" })<br />
         <br />
-         @Html.Partial("DateTour")
+    @*    @Html.EditorFor(m => m.DateTour, "DateTour")*@
+        @Html.Partial("DateTourPartial")
         <br />
-        Виды Транспорта :<br />
-        Автобус @Html.CheckBoxFor(m => m.Bus)<br />
-        Самолет @Html.CheckBoxFor(m => m.Ariplane)<br />
-        Лайнер  @Html.CheckBoxFor(m => m.Ship)<br />
-        Подпись к цене
-        @Html.TextBoxFor(m => m.PodpicePrice)
-        <p>Аукциооная цена : @Html.TextBoxFor(m => m.AukcionPrice)</p>
-        <p>
-            Сумма Агента:  <input type="checkbox" id="Summa" onclick="valid2()" />
-            @Html.TextBoxFor(m => m.KommisiaAgent, new { style = "visibility:hidden", id = "SummaAgent" })<br />
-        </p>
-        @Html.Partial("DopUsluga")
-        <p>
-            Имя Сопровождающего :@Html.TextBoxFor(m => m.SuppName)<br />
-            Фото Сопровождающего :<input type="file" name="file" />
-        <p>@ViewBag.Message</p>
-        <p>
-             Ссылка на соц. сеть: @Html.TextBoxFor(m=>m.SuppVkontakte)<br />
-            Описание сопровождающего : @Html.TextBoxFor(m=>m.SuppDiscription)<br/>
-        </p>
-       <select name="KindOfPay">
-           <option selected="selected">Способ оплаты</option>
-           <option>Наличный</option>
-           <option>Безналичный</option>
-           <option>Оба</option>
-       </select>
-        <br/>
-        Количество участyков :@Html.TextBoxFor(m=>m.AllPeople)<br/>
-        Уже едут :@Html.TextBoxFor(m=>m.People)<br/>
-        Обложка тура - <input type="file" name="TourImg" /><br/>
-         Галлерея : @Html.DropDownList("GalleryID",String.Empty)<br/>
-         Загрузить файл :<input type="file" name="Document" /><br/>
-         Бонус за тур :
-        <input type="checkbox" id="Bonus" onclick="valid3()" />
-        @Html.TextBoxFor(m => m.Bonus, new {style="visibility:hidden",id="BonusText" })<br/>
-         Тэги :@Html.TextBoxFor(m=>m.Teg)<br/>
+            Виды Транспорта :<br />
+            Автобус @Html.CheckBoxFor(m => m.Bus)<br />
+            Самолет @Html.CheckBoxFor(m => m.Ariplane)<br />
+            Лайнер  @Html.CheckBoxFor(m => m.Ship)<br />
+            Подпись к цене
+            @Html.TextBoxFor(m => m.PodpicePrice)
+            <p>Аукциооная цена : @Html.TextBoxFor(m => m.AukcionPrice)</p>
+            <p>
+                Сумма Агента:  <input type="checkbox" id="Summa" onclick="valid2()" />
+                @Html.TextBoxFor(m => m.KommisiaAgent, new { style = "visibility:hidden", id = "SummaAgent" })<br />
+            </p>
+            <p>
+                Имя Сопровождающего :@Html.TextBoxFor(m => m.SuppName)<br />
+            <p>@ViewBag.Message</p>
+            <p>
+                Ссылка на соц. сеть: @Html.TextBoxFor(m => m.SuppVkontakte)<br />
+                Описание сопровождающего : @Html.TextBoxFor(m => m.SuppDiscription)<br />
+            </p>
+            <select name="KindOfPay">
+                <option selected="selected">Способ оплаты</option>
+                <option>Наличный</option>
+                <option>Безналичный</option>
+                <option>Оба</option>
+            </select>
+            <br />
+            Количество участyков :@Html.TextBoxFor(m => m.AllPeople)<br />
+            Уже едут :@Html.TextBoxFor(m => m.People)<br />
+            Обложка тура - <input type="file" name="TourImg" /><br />
+            Галлерея : @Html.DropDownList("GalleryID", String.Empty)<br />
+            Загрузить файл :<input type="file" name="Document" /><br />
+            Бонус за тур :
+            <input type="checkbox" id="Bonus" onclick="valid3()" />
+            @Html.TextBoxFor(m => m.Bonus, new { style = "visibility:hidden", id = "BonusText" })<br />
+            Тэги :@Html.TextBoxFor(m => m.Teg)<br />
 
-        <input type="submit" value="Создать Тур" />
-    </div>
-</form>
-@section scripts {
-    <script>
-        CKEDITOR.replace("DiscriptionTour", {
-            filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
-        });
-    </script>
-<script>
-    CKEDITOR.replace("SuppDiscription", {
-        filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
-    });
-</script>
+            <input type="submit" value="Создать Тур" />
+            </div>
+            </form>
+            @section scripts {
+                <script>
+                    CKEDITOR.replace("DiscriptionTour", {
+                        filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
+                    });
+                </script>
+                <script>
+                    CKEDITOR.replace("SuppDiscription", {
+                        filebrowserBrowseUrl: '/Scripts/Filemanager-master/index.html'
+                    });
+                </script>
 
-    <script type="text/javascript">
-        function valid() {
-            if (document.getElementById('Predop').checked) {
-                document.getElementById('PrePay').style.visibility = 'visible';
+                <script type="text/javascript">
+                    function valid() {
+                        if (document.getElementById('Predop').checked) {
+                            document.getElementById('PrePay').style.visibility = 'visible';
+                        }
+                    }
+                    function valid2() {
+                        if (document.getElementById('Summa').checked) {
+                            document.getElementById('SummaAgent').style.visibility = 'visible';
+                        }
+                    }
+                    function valid3() {
+                        if (document.getElementById('Bonus').checked) {
+                            document.getElementById('BonusText').style.visibility = 'visible';
+                        }
+                    }
+
+                </script>
             }
-        }
-        function valid2() {
-            if (document.getElementById('Summa').checked) {
-                document.getElementById('SummaAgent').style.visibility = 'visible';
-            }
-        }
-        function valid3() {
-            if(document.getElementById('Bonus').checked)
-            {
-                document.getElementById('BonusText').style.visibility = 'visible';
-            }
-        }
-        
-    </script>
-}

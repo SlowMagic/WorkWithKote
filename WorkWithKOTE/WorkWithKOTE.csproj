@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BeginCollectionItem">
+      <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -1059,9 +1062,12 @@
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\Profile\ForgotPassword.cshtml" />
     <Content Include="Views\TourCreate\TourCreate.cshtml" />
-    <Content Include="Views\TourCreate\DateTour1.cshtml" />
     <Content Include="Views\TourCreate\DopUsluga.cshtml" />
-    <Content Include="Views\TourCreate\DateTour.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTour.cshtml" />
+    <Content Include="Views\TourCreate\PartialDateTour.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\TourCreate\DateTourPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -34,7 +34,6 @@ namespace WorkWithKOTE.Models
        public string NameTour {get;set;}
        public string TitleTour { get; set; }
        [AllowHtml]
-        [Required]
        public string DiscriptionTour { get; set; }
        public float? Cost { get; set; }
        public string Valuta { get; set; }
@@ -59,8 +58,8 @@ namespace WorkWithKOTE.Models
        public float? Bonus { get; set; }
        public string Teg { get; set; }
        public List<RoutePoint> RoutePoints { get; set; }
-       public ICollection<DateTour> DateTour { get; set; }
-       public List<DopUslug> DopUsluga { get; set; }
+       public IList<DateTour> DateTour { get; set; }
+       public IList<DopUslug> DopUsluga { get; set; }
        public int? GalleryID { get; set; }
 
     }
@@ -83,8 +82,8 @@ namespace WorkWithKOTE.Models
         public int TourId { get; set; }
         public Tour Tour { get; set; }
         [DataType(DataType.Date)]
-        public string FitstDate { get; set; }
-        public string SeconDate { get; set; }
+        public string FirstDate { get; set; }
+        public string SecondDate { get; set; }
     }
     [Table ("Gallery")]
     public class Gallery

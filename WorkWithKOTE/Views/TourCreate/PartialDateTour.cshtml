@@ -1,0 +1,25 @@
+﻿@model WorkWithKOTE.Models.DateTour
+
+@{
+    Layout = null;
+}
+<fieldset>
+    @using (Html.BeginCollectionItem("model.DateTour"))
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FirstDate, new { @class = "mycls" })
+            @Html.ValidationMessageFor(model => model.FirstDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecondDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecondDate)
+            @Html.ValidationMessageFor(model => model.SecondDate)
+        </div>
+    }
+</fieldset>
