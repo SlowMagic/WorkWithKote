@@ -17,10 +17,10 @@ namespace WorkWithKOTE.Models
 
     }
 
-        public DbSet<Tour> Tours { get; set; }
+        public DbSet<Tour> Tour { get; set; }
 
         public DbSet<DateTour> DateTours { get; set; }
-
+        public DbSet<Teg> Teg { get; set; }
         public DbSet<DopUslug> DopUslugs { get; set; }
         public DbSet<Gallery> Gallery { get; set; }
         public DbSet<RoutePoint> RoutePoint { get; set; }
@@ -39,9 +39,9 @@ namespace WorkWithKOTE.Models
        public string Valuta { get; set; }
        public string PrePay { get; set; }
        public string Reservation { get; set; }
-       public bool Bus { get; set; }
-       public bool Ariplane { get; set; }
-       public bool Ship { get; set; }
+       public bool IsBus { get; set; }
+       public bool IsAriplane { get; set; }
+       public bool IsShip { get; set; }
        public string PodpicePrice { get; set; }
        public string AukcionPrice { get; set; }
        public string KommisiaAgent { get; set; } 
@@ -56,12 +56,18 @@ namespace WorkWithKOTE.Models
        public string PohozTour { get; set; }
        public string Document { get; set; }
        public float? Bonus { get; set; }
-       public string Teg { get; set; }
+       public IList<Teg> Teg { get; set; }
        public List<RoutePoint> RoutePoints { get; set; }
        public IList<DateTour> DateTour { get; set; }
-       public IList<DopUslug> DopUsluga { get; set; }
+       public IList<DopUslug> DopUslug { get; set; }
        public int? GalleryID { get; set; }
 
+    }
+    public class Teg
+    {
+        public int TegId { get; set; }
+        public int TourId { get; set; }
+        public string TegName { get; set; }
     }
     public class RoutePoint
     {
@@ -80,8 +86,6 @@ namespace WorkWithKOTE.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DateTourId { get; set; }
         public int TourId { get; set; }
-        public Tour Tour { get; set; }
-        [DataType(DataType.Date)]
         public string FirstDate { get; set; }
         public string SecondDate { get; set; }
     }
@@ -102,8 +106,8 @@ namespace WorkWithKOTE.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DopUslugId { get; set; }
-        public string DopUsluga { get; set; }
-        public float? Price { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
         public int TourId { get; set; }
     }
 }

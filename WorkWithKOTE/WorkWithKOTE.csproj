@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TourCreateController.cs" />
+    <Compile Include="Controllers\TourDisplayController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1068,10 +1069,19 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\TourCreate\DateTourPartial.cshtml" />
+    <Content Include="Views\Home\DateForCurrentTour.cshtml" />
+    <Content Include="Views\TourDisplay\Index.cshtml" />
+    <Content Include="Views\TourCreate\TegPartialView.cshtml" />
+    <Content Include="Views\TourDisplay\DatePartial.cshtml" />
+    <Content Include="Views\TourDisplay\DopUsluga.cshtml" />
+    <Content Include="Views\TourDisplay\Teg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="UpLoad\" />
+    <Folder Include="UpLoad\SuppFoto\" />
+    <Folder Include="UpLoad\TourDescription\" />
+    <Folder Include="UpLoad\TourDocument\" />
+    <Folder Include="UpLoad\TourImg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

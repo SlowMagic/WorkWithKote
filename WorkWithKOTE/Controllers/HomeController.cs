@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WorkWithKOTE.Models;
 
 namespace WorkWithKOTE.Controllers
 {
     public class HomeController : Controller
     {
+        TourContext db = new TourContext();
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            return View(db.Tour.ToList());
+        }
+        public ActionResult DateForCurrentTour(int id)
+        {
+            
+            var date = db.DateTours.Where(m => m.TourId== id);
+          
+            return PartialView(date);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
-
+            
             return View();
         }
 

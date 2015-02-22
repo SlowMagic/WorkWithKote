@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WorkWithKOTE.Models.DateTour>
+
+@foreach (var item in Model)
+{
+    <td>
+        @Html.DisplayFor(m => item.FirstDate) -
+        @Html.DisplayFor(m => item.SecondDate)
+    </td>
+} 
