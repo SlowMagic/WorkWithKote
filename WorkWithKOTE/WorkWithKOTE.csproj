@@ -186,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\VKontakteAuthenticationClient.cs.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TourCreateController.cs" />
@@ -1075,6 +1076,7 @@
     <Content Include="Views\TourDisplay\DatePartial.cshtml" />
     <Content Include="Views\TourDisplay\DopUsluga.cshtml" />
     <Content Include="Views\TourDisplay\Teg.cshtml" />
+    <Content Include="Views\Buy\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

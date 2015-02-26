@@ -22,6 +22,7 @@
                 <td>   @Html.Label(item.NameTour)</td>
                @{ Html.RenderAction("DateForCurrentTour", new { id = item.TourId });};
                 <td> @Html.ActionLink("Посмотреть детали тура", "Index", "TourDisplay", new { id = item.TourId },null)</td>
+                <td><input type="button" value="Оплатить тур" onclick="location.href='@Url.Action("Index", "Buy", new {id=item.TourId })'" /></td>
             </tr>
         }
 </table>
