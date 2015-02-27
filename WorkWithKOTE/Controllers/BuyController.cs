@@ -14,12 +14,19 @@ namespace WorkWithKOTE.Controllers
         TourContext db = new TourContext();
         public ActionResult Index(int id )
         {
-            Tour date = db.Tour.Find(id);
-            ViewBag.TourPrices = date.Cost;
+            Tour data = db.Tour.Find(id);
+            ViewBag.TourPrices = data.Cost;
             Trip trip = new Trip();
-            trip.TourPrice = date.Cost;
+            trip.TourId = data.TourId;
+            ViewBag.TourPricesWith = data.Cost;
             ViewBag.DateTourId = new SelectList(db.DateTours.Where(m => m.TourId == id), "DateTourId", "FirstDate");
             return View(trip);
+        }
+        public ActionResult DopPricePartial(int id = 0)
+        {
+            var data = db.DopUslugs.Where(m=>m.TourId == id);
+            
+            return View(data);
         }
 
     }

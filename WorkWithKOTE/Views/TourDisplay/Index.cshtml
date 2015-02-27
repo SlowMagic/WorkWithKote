@@ -19,7 +19,7 @@
  Способы оплаты тура :@Html.DisplayFor(m=>m.KindOfPay)<br/>
  Количество мест (@Html.DisplayFor(m=>m.AllPeople)) и уже едут(@Html.DisplayFor(m=>m.People))<br/>
  Обложка тура - <img src="@Html.DisplayFor(m=>m.TourImg)" width="50px" height="100px" /><br/>
- @{ Html.RenderAction("Teg", new { id = Model.TourId });};<br />
+ @{ Html.RenderAction("Teg", new { id = Model.TourId });}<br />
 <p>Транспортировка : @ViewBag.Message @ViewBag.Message1 @ViewBag.Message2</p>
 Бронь:@Html.DisplayFor(m => m.Reservation)<br/>
 Бонус за тур :@Html.DisplayFor(m => m.Bonus)<br/>

@@ -6,7 +6,7 @@
         <input type="text" name="DopUslug[0].Price"/><br/>
     </div>
 </div>
-<p><a class="addUslug">Добавить новый элемент</a></p>
+<p><input type="button" class="addUslug" ></p>
 <script>
     $(function () {
         var i = 0;
@@ -18,7 +18,7 @@
                  "<h4>Цена Дополнительной услуги №" + (i + 1) + "</h4>" +
                  "<input type='text' name='DopUslug[" + i + "].Price' />" +
              "</div>";
-            $('#dopusliga-pannel').append(html2Adds);
+            $('#dopusluga-pannel').append(html2Adds);
         })
     })
 </script>

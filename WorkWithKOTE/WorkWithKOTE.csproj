@@ -1066,9 +1066,6 @@
     <Content Include="Views\TourCreate\TourCreate.cshtml" />
     <Content Include="Views\TourCreate\DopUsluga.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTour.cshtml" />
-    <Content Include="Views\TourCreate\PartialDateTour.cshtml">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="Views\TourCreate\DateTourPartial.cshtml" />
     <Content Include="Views\Home\DateForCurrentTour.cshtml" />
     <Content Include="Views\TourDisplay\Index.cshtml" />
@@ -1077,6 +1074,7 @@
     <Content Include="Views\TourDisplay\DopUsluga.cshtml" />
     <Content Include="Views\TourDisplay\Teg.cshtml" />
     <Content Include="Views\Buy\Index.cshtml" />
+    <Content Include="Views\Buy\DopPricePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
