@@ -10,11 +10,11 @@
 <script type="text/javascript">
     $(function () {
         var sumFunction = function () {
-            var sum = @ViewBag.Prices ;
+            var sum = document.getElementById("Prices").value;
             $('#options input[type=checkbox]:checked').each(function (i, v) {
                 sum += parseInt($(v).attr('price'));
             });
-            $('#TourPrice').text(sum);
+            $('#Prices').text(sum);
         };
         $('#options input[type=checkbox]').click(sumFunction);
     })

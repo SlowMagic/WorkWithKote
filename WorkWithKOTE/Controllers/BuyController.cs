@@ -18,7 +18,7 @@ namespace WorkWithKOTE.Controllers
             ViewBag.TourPrices = data.Cost;
             Trip trip = new Trip();
             trip.TourId = data.TourId;
-            ViewBag.TourPricesWith = data.Cost;
+            trip.TourPrice = data.Cost;
             ViewBag.DateTourId = new SelectList(db.DateTours.Where(m => m.TourId == id), "DateTourId", "FirstDate");
             return View(trip);
         }
