@@ -26,7 +26,7 @@ namespace WorkWithKOTE.Controllers
             if (!roles.RoleExists("Admin"))
                 roles.CreateRole("Admin");
 
-            // Если нет в системе пользователя admin, создаём его(в этом месте ошибка)
+            // Если нет в системе пользователя admin, создаём его
             if (membership.GetUser("LevitskiyOrange@gmail.com", false) == null)
             {
                 membership.CreateUserAndAccount("LevitskiyOrange@gmail.com", "orange123654789");
