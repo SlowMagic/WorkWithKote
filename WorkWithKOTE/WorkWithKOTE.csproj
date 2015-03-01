@@ -1075,6 +1075,11 @@
     <Content Include="Views\TourDisplay\Teg.cshtml" />
     <Content Include="Views\Buy\Index.cshtml" />
     <Content Include="Views\Buy\DopPricePartial.cshtml" />
+    <Content Include="Views\Account\RolesForUser.cshtml" />
+    <Content Include="Views\Home\TourForHight.cshtml" />
+    <Content Include="Views\Home\Center.cshtml" />
+    <Content Include="Views\Home\TourForDown.cshtml" />
+    <Content Include="Views\TourCreate\MapPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

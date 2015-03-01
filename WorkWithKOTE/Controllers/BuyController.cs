@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,13 @@ namespace WorkWithKOTE.Controllers
             trip.TourPrice = data.Cost;
             ViewBag.DateTourId = new SelectList(db.DateTours.Where(m => m.TourId == id), "DateTourId", "FirstDate");
             return View(trip);
+        }
+        [HttpPost]
+        public ActionResult Index(Trip model)
+        {
+            db.Entry(model).State = EntityState.Added;
+            db.SaveChanges();
+            return RedirectToAction("Index","Home");
         }
         public ActionResult DopPricePartial(int id = 0)
         {

@@ -1,28 +1,18 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@model  IEnumerable<WorkWithKOTE.Models.Tour>
 @section featured {
     <section class="featured">
         <div class="content-wrapper">
-            <h6> Тут мы можем увидеть все наши туры</h6> 
+            <h6> Тут мы можем увидеть все наши туры</h6>
         </div>
     </section>
 }
-<table>
-    <tr>
-        <td>Название тура</td>
-         <td>Дата отправки</td>
-         <td>Дата приезда</td>
-    </tr>
-   
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>   @Html.Label(item.NameTour)</td>
-               @{ Html.RenderAction("DateForCurrentTour", new { id = item.TourId });};
-                <td> @Html.ActionLink("Посмотреть детали тура", "Index", "TourDisplay", new { id = item.TourId },null)</td>
-                <td><input type="button" value="Оплатить тур" onclick="location.href='@Url.Action("Index", "Buy", new {id=item.TourId })'" /></td>
-            </tr>
-        }
-</table>
+<div>
+    @{Html.RenderAction("TourForHight");}
+    <hr>
+    @{Html.RenderAction("Center");}
+    <hr>
+    @{Html.RenderAction("TourForDown");}
+    <hr>
+</div>

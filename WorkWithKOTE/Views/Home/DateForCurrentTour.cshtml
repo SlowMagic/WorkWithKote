@@ -2,8 +2,8 @@
 
 @foreach (var item in Model)
 {
-    <td>
-        @Html.DisplayFor(m => item.FirstDate) -
-        @Html.DisplayFor(m => item.SecondDate)
-    </td>
+    <p>
+       Дата отправки @Html.DisplayFor(m => item.FirstDate) 
+       Дата приезда @Html.DisplayFor(m => item.SecondDate)
+    </p>
 } 
