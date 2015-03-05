@@ -63,6 +63,7 @@ namespace WorkWithKOTE.Models
        public bool IsBus { get; set; }
        public bool IsAriplane { get; set; }
        public bool IsShip { get; set; }
+       public string TourStatus { get; set; }
        public string TypeOfTour { get; set; }
        public string PodpicePrice { get; set; }
        public decimal? AukcionPrice { get; set; }

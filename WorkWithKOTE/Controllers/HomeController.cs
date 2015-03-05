@@ -26,10 +26,10 @@ namespace WorkWithKOTE.Controllers
             if (!roles.RoleExists("Admin"))
                 roles.CreateRole("Admin");
 
-            // Если нет в системе пользователя admin, создаём его
+            // Если нет в системе пользователя admin, создаём его(в этом месте ошибка)
             if (membership.GetUser("LevitskiyOrange@gmail.com", false) == null)
             {
-                membership.CreateUserAndAccount("LevitskiyOrange@gmail.com", "orange123654789");
+                membership.CreateUserAndAccount("LevitskiyOrange@gmail.com", "123654789");
             }
 
             // Если у пользователя admin нет роли admin, присваиваем ему эту роль
@@ -41,7 +41,8 @@ namespace WorkWithKOTE.Controllers
         public ActionResult TourForHight()
         {
             string k = "Вверх";
-            var data = db.Tour.Where(m => m.TypeOfTour == k);
+            string n = "Превью блока";
+            var data = db.Tour.Where(m => m.TypeOfTour == k).Where(m=>m.TourStatus == n);
             return PartialView(data);
            
         }

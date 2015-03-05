@@ -10,6 +10,8 @@
         Название  @Html.TextBoxFor(m => m.NameTour)
         Заголовок  @Html.TextBoxFor(m => m.TitleTour) <br />
         Выберите тип тура:   @Html.DropDownListFor(m => m.TypeOfTour, new List<SelectListItem>() { new SelectListItem { Text = "Вверх" }, new SelectListItem { Text = "Середина" }, new SelectListItem { Text = "Низ" }})
+        Cтатус тура : @Html.DropDownListFor(m => m.TourStatus, new List<SelectListItem>() { new SelectListItem { Text = "Активный" }, new SelectListItem { Text = "Неактивный" }, new SelectListItem { Text = "Превью главной" },
+                 new SelectListItem { Text = "Превью блока" },new SelectListItem { Text = "Рекомендуемый" }})
         Описание:
         @Html.TextAreaFor(m => m.DiscriptionTour)<br />
         стоимость @Html.TextBoxFor(m => m.Cost)<br />
